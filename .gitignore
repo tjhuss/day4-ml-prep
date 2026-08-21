@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.DS_Store
+Datasets/houston_housing_2024.json
