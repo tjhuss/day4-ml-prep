@@ -1,7 +1,9 @@
-# ML-Ready Dataset Prep and Baseline Models
+# ML-Ready Dataset Prep and Regression Models
 
-Cleans two datasets into ML-ready form and trains baseline regression
-models on each.
+Cleans two datasets into ML-ready form, trains a baseline regression
+model on each, then compares four different regression approaches
+(Linear, Ridge, Lasso, Polynomial) to see how model choice actually
+plays out on real data.
 
 ## Setup
 
@@ -61,11 +63,23 @@ predicted.
 | Auto MPG (mpg) | 2.46 | 3.26 | 0.79 |
 | Houston Housing (price) | $102,454 | $160,521 | 0.79 |
 
+## Regression model comparison
+
+`week2_day1_regression_models.py` trains Linear, Ridge, Lasso, and
+Polynomial (degree 2) regression on both datasets. Full writeup with
+explanations in [`regression_report.md`](regression_report.md) — short
+version: Polynomial wins clearly on Auto MPG (R² 0.85 vs. ~0.79 for the
+others), but is the *worst* performer on Houston housing (R² 0.71 vs.
+~0.79), because the larger housing feature set combined with polynomial
+expansion overfits on only 320 training rows. There's no single "best"
+model across both datasets.
+
 ## Usage
 
 ```
 python3 day4_ml_prep.py
 python3 day5_baseline_models.py
+python3 week2_day1_regression_models.py
 ```
 
 Re-running `day4_ml_prep.py` requires the raw `Datasets/houston_housing_2024.json`
