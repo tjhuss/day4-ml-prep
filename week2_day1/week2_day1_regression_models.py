@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-mpg_df = pd.read_csv("Datasets/auto_mpg_cleaned.csv")
+mpg_df = pd.read_csv("../Datasets/auto_mpg_cleaned.csv")
 mpg_df = pd.get_dummies(mpg_df, columns=['origin'], drop_first=True)
 print(mpg_df.head())
 print(mpg_df.columns.tolist())
@@ -55,7 +55,7 @@ poly_reg_model.fit(X_train_poly, y_train)
 evaluate(poly_reg_model, X_test_poly, y_test, "Polynomial Regression (degree 2)")
 
 ##Model 2 for the the Houston Housing Dataset
-housing_df = pd.read_csv("Datasets/houston_housing_cleaned.csv")
+housing_df = pd.read_csv("../Datasets/houston_housing_cleaned.csv")
 housing_df = pd.get_dummies(housing_df, columns=["home_type"], drop_first=True)
 
 housing_feature_cols = ["beds", "baths", "area", "latitude", "longitude",

@@ -1,6 +1,6 @@
 import pandas as pd 
 
-df = pd.read_csv("Datasets/auto_mpg.csv")
+df = pd.read_csv("../Datasets/auto_mpg.csv")
 print(df.head())
 print(df.info())
 
@@ -9,14 +9,14 @@ print(df.info())
 print("Duplicate rows:", df.duplicated().sum())
 print(df["origin"].value_counts())
 
-df.to_csv("Datasets/auto_mpg_cleaned.csv", index=False)
+df.to_csv("../Datasets/auto_mpg_cleaned.csv", index=False)
 print("Saved auto_mpg_cleaned.csv with", len(df), "rows")
 
 
 ##Houston Housing Dataset Cleaning
 import json
 
-with open("Datasets/houston_housing_2024.json", "r") as f:
+with open("../Datasets/houston_housing_2024.json", "r") as f:
     listings = json.load(f)
 
 print("Total listings:", len(listings))
@@ -86,5 +86,5 @@ print(df_housing["home_type"].value_counts())
 # reproducible if we re-run this script)
 df_housing_sample = df_housing.sample(n=400, random_state=42)
 
-df_housing_sample.to_csv("Datasets/houston_housing_cleaned.csv", index=False)
+df_housing_sample.to_csv("../Datasets/houston_housing_cleaned.csv", index=False)
 print(f"\nSaved houston_housing_cleaned.csv with {len(df_housing_sample)} rows")

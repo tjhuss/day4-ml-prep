@@ -46,9 +46,18 @@ Cleaning steps applied, in order:
 Output: `Datasets/houston_housing_cleaned.csv` (400 rows, no missing values,
 no duplicates, price range $40K-$2M)
 
+## Project structure
+
+| Folder | Contents |
+| --- | --- |
+| `Datasets/` | Shared input/output CSVs, used by all three scripts below |
+| `day4/` | `day4_ml_prep.py` — cleans both datasets |
+| `day5/` | `day5_baseline_models.py` — trains a baseline Linear Regression on each |
+| `week2_day1/` | `week2_day1_regression_models.py` and `regression_report.md` — compares four regression approaches |
+
 ## Baseline models
 
-`day5_baseline_models.py` trains a plain Linear Regression baseline for
+`day5/day5_baseline_models.py` trains a plain Linear Regression baseline for
 each dataset (an 80/20 train/test split, no tuning or feature engineering)
 to establish a reference point that future, more advanced models should
 beat.
@@ -65,20 +74,28 @@ predicted.
 
 ## Regression model comparison
 
-`week2_day1_regression_models.py` trains Linear, Ridge, Lasso, and
-Polynomial (degree 2) regression on both datasets. Full writeup with
-explanations in [`regression_report.md`](regression_report.md) — short
-version: Polynomial wins clearly on Auto MPG (R² 0.85 vs. ~0.79 for the
-others), but is the *worst* performer on Houston housing (R² 0.71 vs.
-~0.79), because the larger housing feature set combined with polynomial
-expansion overfits on only 320 training rows. There's no single "best"
-model across both datasets.
+`week2_day1/week2_day1_regression_models.py` trains Linear, Ridge, Lasso,
+and Polynomial (degree 2) regression on both datasets. Full writeup with
+explanations in [`week2_day1/regression_report.md`](week2_day1/regression_report.md)
+— short version: Polynomial wins clearly on Auto MPG (R² 0.85 vs. ~0.79
+for the others), but is the *worst* performer on Houston housing (R² 0.71
+vs. ~0.79), because the larger housing feature set combined with
+polynomial expansion overfits on only 320 training rows. There's no
+single "best" model across both datasets.
 
 ## Usage
 
+Each folder's script reads/writes to the shared `Datasets/` folder using
+a relative path, so `cd` into the folder first:
+
 ```
+cd day4
 python3 day4_ml_prep.py
+
+cd ../day5
 python3 day5_baseline_models.py
+
+cd ../week2_day1
 python3 week2_day1_regression_models.py
 ```
 

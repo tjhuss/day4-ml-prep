@@ -48,7 +48,7 @@ def train_baseline(df, target, feature_cols, categorical_cols, label):
     return model
 
 
-mpg_df = pd.read_csv("Datasets/auto_mpg_cleaned.csv")
+mpg_df = pd.read_csv("../Datasets/auto_mpg_cleaned.csv")
 train_baseline(
     mpg_df,
     target="mpg",
@@ -58,7 +58,7 @@ train_baseline(
     label="Auto MPG (predicting mpg)",
 )
 
-housing_df = pd.read_csv("Datasets/houston_housing_cleaned.csv")
+housing_df = pd.read_csv("../Datasets/houston_housing_cleaned.csv")
 train_baseline(
     housing_df,
     target="price",
