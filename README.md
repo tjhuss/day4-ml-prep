@@ -1,6 +1,7 @@
-# ML-Ready Dataset Prep
+# ML-Ready Dataset Prep and Baseline Models
 
-Cleans two datasets into ML-ready form for classical regression practice.
+Cleans two datasets into ML-ready form and trains baseline regression
+models on each.
 
 ## Setup
 
@@ -43,11 +44,29 @@ Cleaning steps applied, in order:
 Output: `Datasets/houston_housing_cleaned.csv` (400 rows, no missing values,
 no duplicates, price range $40K-$2M)
 
+## Baseline models
+
+`day5_baseline_models.py` trains a plain Linear Regression baseline for
+each dataset (an 80/20 train/test split, no tuning or feature engineering)
+to establish a reference point that future, more advanced models should
+beat.
+
+Notably, the Houston housing model deliberately excludes Zillow's own
+`zestimate` field from its features — including it would be a data leakage
+bug, since it's essentially another estimate of the exact value being
+predicted.
+
+| Dataset | MAE | RMSE | R² |
+| --- | --- | --- | --- |
+| Auto MPG (mpg) | 2.46 | 3.26 | 0.79 |
+| Houston Housing (price) | $102,454 | $160,521 | 0.79 |
+
 ## Usage
 
 ```
 python3 day4_ml_prep.py
+python3 day5_baseline_models.py
 ```
 
-Re-running requires the raw `Datasets/houston_housing_2024.json` file to be
-present locally (not included in this repo — see above).
+Re-running `day4_ml_prep.py` requires the raw `Datasets/houston_housing_2024.json`
+file to be present locally (not included in this repo — see above).
