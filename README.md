@@ -52,12 +52,12 @@ no duplicates, price range $40K-$2M)
 | --- | --- |
 | `Datasets/` | Shared input/output CSVs, used by all three scripts below |
 | `day4/` | `day4_ml_prep.py` — cleans both datasets |
-| `day5/` | `day5_baseline_models.py` — trains a baseline Linear Regression on each |
+| `day5/` | `day5_baseline_models.ipynb` — trains a baseline Linear Regression on each |
 | `week2_day1/` | `week2_day1_regression_models.py` and `regression_report.md` — compares four regression approaches |
 
 ## Baseline models
 
-`day5/day5_baseline_models.py` trains a plain Linear Regression baseline for
+`day5/day5_baseline_models.ipynb` trains a plain Linear Regression baseline for
 each dataset (an 80/20 train/test split, no tuning or feature engineering)
 to establish a reference point that future, more advanced models should
 beat.
@@ -93,7 +93,8 @@ cd day4
 python3 day4_ml_prep.py
 
 cd ../day5
-python3 day5_baseline_models.py
+jupyter nbconvert --to notebook --execute --inplace day5_baseline_models.ipynb
+# or just open day5_baseline_models.ipynb in Jupyter/VS Code and run all cells
 
 cd ../week2_day1
 python3 week2_day1_regression_models.py
